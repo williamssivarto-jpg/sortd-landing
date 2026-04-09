@@ -336,7 +336,7 @@ export default function SortdLandingPage() {
                       <input
                         key={field.key}
                         placeholder={field.placeholder}
-                        value={formData[field.key]}
+                        value={formData[field.key as keyof typeof formData]}
                         onChange={(e) => setFormData({ ...formData, [field.key]: e.target.value })}
                         style={{ width: "100%", padding: "11px 14px", borderRadius: 8, border: `0.5px solid ${BORDER_MED}`, fontSize: 14, background: BG2, color: TEXT, boxSizing: "border-box" }}
                       />
