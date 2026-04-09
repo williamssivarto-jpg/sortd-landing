@@ -18,7 +18,6 @@ const CHAT_URL = "https://colin-73.app.n8n.cloud/webhook/66beb48f-e1ab-4137-957c
 export default function SortdLandingPage() {
   const [formData, setFormData] = useState({ name: "", agency: "", email: "", phone: "" });
   const [submitted, setSubmitted] = useState(false);
-  const [showChat, setShowChat] = useState(false);
 
   const handleSubmit = () => {
     if (formData.name && formData.email) setSubmitted(true);
@@ -31,7 +30,6 @@ export default function SortdLandingPage() {
   return (
     <div style={{ fontFamily: "var(--font-sans)", color: TEXT, background: BG, minHeight: "100vh" }}>
 
-      {/* Nav */}
       <nav style={{ borderBottom: `0.5px solid ${BORDER}`, padding: "0 2rem", position: "sticky", top: 0, background: `${BG}F2`, zIndex: 100 }}>
         <div style={{ maxWidth: 1100, margin: "0 auto", display: "flex", alignItems: "center", justifyContent: "space-between", height: 64 }}>
           <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
@@ -51,7 +49,6 @@ export default function SortdLandingPage() {
         </div>
       </nav>
 
-      {/* Hero */}
       <section style={{ maxWidth: 1100, margin: "0 auto", padding: "6rem 2rem 5rem" }}>
         <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 72, alignItems: "center" }}>
           <div>
@@ -74,7 +71,6 @@ export default function SortdLandingPage() {
             <p style={{ fontSize: 13, color: TEXT_DIM, margin: 0 }}>No tech knowledge needed. We set it up, you get the leads.</p>
           </div>
 
-          {/* Chat mockup */}
           <div style={{ background: BG2, borderRadius: 18, border: `0.5px solid ${BORDER}`, padding: 20 }}>
             <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 16 }}>
               <div style={{ width: 10, height: 10, borderRadius: "50%", background: "#E24B4A" }}></div>
@@ -97,12 +93,12 @@ export default function SortdLandingPage() {
                 </div>
               </div>
               {[
-                { from: "sortd", text: "Hi! I'm Sortd. Let's find your perfect holiday. Who's travelling — couple, family, friends, or solo? And how many people?" },
+                { from: "sortd", text: "Hi! I'm Sortd. Let's find your perfect holiday. Who's travelling and how many people?" },
                 { from: "user", text: "Couple, just the two of us. July, 10 nights from Manchester." },
-                { from: "sortd", text: "Great. Are you open to long haul, or short haul only?" },
+                { from: "sortd", text: "Are you open to long haul, or short haul only?" },
                 { from: "user", text: "Open to long haul. Budget around £2,500 each." },
-                { from: "sortd", text: "Beach, city break, all-inclusive, or something else? And do you want guaranteed heat?" },
-                { from: "user", text: "Beach, all-inclusive. Guaranteed heat, yes." },
+                { from: "sortd", text: "Beach, city break, all-inclusive? And do you want guaranteed heat?" },
+                { from: "user", text: "Beach, all-inclusive. Guaranteed heat yes." },
                 { from: "sortd", text: "Perfect — I have three brilliant matches for you..." },
               ].map((msg, i) => (
                 <div key={i} style={{ marginBottom: 8, display: "flex", justifyContent: msg.from === "user" ? "flex-end" : "flex-start" }}>
@@ -120,7 +116,6 @@ export default function SortdLandingPage() {
         </div>
       </section>
 
-      {/* Stats bar */}
       <div style={{ borderTop: `0.5px solid ${BORDER}`, borderBottom: `0.5px solid ${BORDER}`, background: BG2 }}>
         <div style={{ maxWidth: 1100, margin: "0 auto", padding: "1.75rem 2rem", display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: 16 }}>
           {[
@@ -137,7 +132,6 @@ export default function SortdLandingPage() {
         </div>
       </div>
 
-      {/* Benefits */}
       <section style={{ maxWidth: 1100, margin: "0 auto", padding: "5rem 2rem" }}>
         <div style={{ maxWidth: 600, marginBottom: 48 }}>
           <h2 style={{ fontSize: 38, fontWeight: 500, margin: "0 0 16px", letterSpacing: "-0.5px", color: TEXT }}>What Sortd does for your agency</h2>
@@ -147,10 +141,10 @@ export default function SortdLandingPage() {
           {[
             { icon: "M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z", title: "Qualifies every enquiry", desc: "Budget, dates, airport, holiday style, weather, must-haves and deal breakers — all captured before your team makes contact." },
             { icon: "M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7", title: "Recommends 3 best matches", desc: "Best overall, best value, and a wildcard. Each comes with a destination, reason, weather, and budget fit." },
-            { icon: "M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z", title: "Delivers a warm lead", concise: true, desc: "Your team gets a fully structured lead summary by email — priorities, budget, lead quality score, and best contact time." },
+            { icon: "M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z", title: "Delivers a warm lead", desc: "Your team gets a fully structured lead summary by email — priorities, budget, lead quality score, and best contact time." },
             { icon: "M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z", title: "Works while you sleep", desc: "Sortd runs 24/7. Late-night enquiries get the same quality response as a Monday morning call." },
             { icon: "M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z", title: "Feels like your brand", desc: "Configured for your agency, your tone, and your travel specialisms. Not a generic chatbot." },
-            { icon: "M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z", title: "Logs and scores every lead", desc: "Every completed enquiry logged to a spreadsheet with a hot, warm or cold quality score. Know who to call first." },
+            { icon: "M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z", title: "Logs and scores every lead", desc: "Every completed enquiry logged with a hot, warm or cold quality score. Know who to call first." },
           ].map((item) => (
             <div key={item.title} style={{ background: BG2, border: `0.5px solid ${BORDER}`, borderRadius: 12, padding: "22px 20px" }}>
               <div style={{ width: 40, height: 40, background: TEAL_DIM, borderRadius: 10, display: "flex", alignItems: "center", justifyContent: "center", marginBottom: 16 }}>
@@ -163,7 +157,6 @@ export default function SortdLandingPage() {
         </div>
       </section>
 
-      {/* How it works */}
       <section id="how-it-works" style={{ background: BG2, borderTop: `0.5px solid ${BORDER}`, borderBottom: `0.5px solid ${BORDER}` }}>
         <div style={{ maxWidth: 1100, margin: "0 auto", padding: "5rem 2rem" }}>
           <h2 style={{ fontSize: 38, fontWeight: 500, margin: "0 0 48px", letterSpacing: "-0.5px", color: TEXT }}>How it works</h2>
@@ -188,7 +181,6 @@ export default function SortdLandingPage() {
         </div>
       </section>
 
-      {/* Try Sortd Live */}
       <section id="try-sortd" style={{ maxWidth: 1100, margin: "0 auto", padding: "5rem 2rem" }}>
         <div style={{ textAlign: "center", maxWidth: 600, margin: "0 auto 48px" }}>
           <div style={{ display: "inline-flex", alignItems: "center", gap: 6, background: TEAL_DIM, color: TEAL, fontSize: 13, fontWeight: 500, padding: "5px 14px", borderRadius: 20, marginBottom: 20, border: `0.5px solid ${BORDER_MED}` }}>
@@ -198,30 +190,19 @@ export default function SortdLandingPage() {
           <h2 style={{ fontSize: 38, fontWeight: 500, margin: "0 0 16px", letterSpacing: "-0.5px", color: TEXT }}>Try Sortd right now</h2>
           <p style={{ fontSize: 17, color: TEXT_MED, margin: 0, lineHeight: 1.7 }}>This is the real thing — not a mockup. Have a conversation with Sortd and see exactly what your customers would experience and what you'd receive as a lead.</p>
         </div>
-        <div style={{ background: BG2, borderRadius: 16, border: `0.5px solid ${BORDER_MED}`, overflow: "hidden", maxWidth: 800, margin: "0 auto" }}>
-          {!showChat ? (
-            <div style={{ padding: "48px 32px", textAlign: "center" }}>
-              <div style={{ width: 64, height: 64, background: TEAL_DIM, borderRadius: "50%", display: "flex", alignItems: "center", justifyContent: "center", margin: "0 auto 20px" }}>
-                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke={TEAL} strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
-              </div>
-              <h3 style={{ margin: "0 0 12px", fontSize: 20, fontWeight: 500, color: TEXT }}>Start a live conversation with Sortd</h3>
-              <p style={{ margin: "0 0 28px", fontSize: 15, color: TEXT_MED, lineHeight: 1.6 }}>Ask about a real holiday — Sortd will qualify your enquiry and recommend best-fit destinations. Takes about 3 minutes.</p>
-              <button onClick={() => setShowChat(true)} style={{ background: TEAL_DARK, color: "white", border: "none", borderRadius: 8, padding: "13px 32px", fontSize: 15, fontWeight: 500, cursor: "pointer" }}>
-                Start the demo
-              </button>
-              <p style={{ margin: "16px 0 0", fontSize: 12, color: TEXT_DIM }}>No sign-up needed. Just start chatting.</p>
-            </div>
-          ) : (
-            <iframe
-              src={CHAT_URL}
-              style={{ width: "100%", height: 600, border: "none", display: "block" }}
-              title="Sortd Live Demo"
-            />
-          )}
+        <div style={{ background: BG2, borderRadius: 16, border: `0.5px solid ${BORDER_MED}`, maxWidth: 800, margin: "0 auto", padding: "48px 32px", textAlign: "center" }}>
+          <div style={{ width: 64, height: 64, background: TEAL_DIM, borderRadius: "50%", display: "flex", alignItems: "center", justifyContent: "center", margin: "0 auto 20px" }}>
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke={TEAL} strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+          </div>
+          <h3 style={{ margin: "0 0 12px", fontSize: 20, fontWeight: 500, color: TEXT }}>Start a live conversation with Sortd</h3>
+          <p style={{ margin: "0 0 28px", fontSize: 15, color: TEXT_MED, lineHeight: 1.6 }}>Ask about a real holiday — Sortd will qualify your enquiry and recommend best-fit destinations. Takes about 3 minutes.</p>
+          <a href={CHAT_URL} target="_blank" rel="noopener noreferrer" style={{ background: TEAL_DARK, color: "white", borderRadius: 8, padding: "13px 32px", fontSize: 15, fontWeight: 500, textDecoration: "none", display: "inline-block" }}>
+            Start the demo
+          </a>
+          <p style={{ margin: "16px 0 0", fontSize: 12, color: TEXT_DIM }}>Opens in a new tab. No sign-up needed.</p>
         </div>
       </section>
 
-      {/* Lead summary example */}
       <section style={{ background: BG2, borderTop: `0.5px solid ${BORDER}`, borderBottom: `0.5px solid ${BORDER}` }}>
         <div style={{ maxWidth: 1100, margin: "0 auto", padding: "5rem 2rem" }}>
           <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 64, alignItems: "start" }}>
@@ -270,7 +251,6 @@ export default function SortdLandingPage() {
         </div>
       </section>
 
-      {/* Pricing */}
       <section id="pricing" style={{ maxWidth: 1100, margin: "0 auto", padding: "5rem 2rem" }}>
         <div style={{ textAlign: "center", maxWidth: 500, margin: "0 auto 48px" }}>
           <h2 style={{ fontSize: 38, fontWeight: 500, margin: "0 0 12px", letterSpacing: "-0.5px", color: TEXT }}>Simple pricing</h2>
@@ -299,7 +279,6 @@ export default function SortdLandingPage() {
         <p style={{ margin: "18px 0 0", textAlign: "center", fontSize: 12, color: TEXT_DIM }}>Early pricing shown for pilot clients and subject to refinement.</p>
       </section>
 
-      {/* Demo form */}
       <section id="demo" style={{ background: BG2, borderTop: `0.5px solid ${BORDER}`, borderBottom: `0.5px solid ${BORDER}` }}>
         <div style={{ maxWidth: 1100, margin: "0 auto", padding: "5rem 2rem" }}>
           <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 64, alignItems: "center" }}>
@@ -353,7 +332,6 @@ export default function SortdLandingPage() {
         </div>
       </section>
 
-      {/* Footer */}
       <footer style={{ borderTop: `0.5px solid ${BORDER}`, padding: "2rem" }}>
         <div style={{ maxWidth: 1100, margin: "0 auto", display: "flex", justifyContent: "space-between", alignItems: "center" }}>
           <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
