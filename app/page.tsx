@@ -30,14 +30,15 @@ export default function SortdLandingPage() {
         "Hi! I'm Sortd. Let's find your perfect holiday. Who's travelling — couple, family, friends, or solo? And how many people in your group?"
       ],
       i18n: {
-        en: {
-          title: 'Sortd',
-          subtitle: 'AI holiday matcher — find your perfect trip',
-          footer: '',
-          getStarted: 'Start a conversation',
-          inputPlaceholder: 'Type your message...',
-        },
-      },
+  en: {
+    title: 'Sortd',
+    subtitle: 'AI holiday matcher — find your perfect trip',
+    footer: '',
+    getStarted: 'Start a conversation',
+    inputPlaceholder: 'Type your message...',
+    closeButtonTooltip: 'Close chat',
+  },
+},
     });
   }, []);
 
