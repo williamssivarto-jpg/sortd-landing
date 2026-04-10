@@ -1,5 +1,7 @@
 "use client";
-import { useState } from "react";
+import { useEffect, useState } from 'react';
+import '@n8n/chat/style.css';
+import { createChat } from '@n8n/chat';
 
 const TEAL = "#3ECFA0";
 const TEAL_DARK = "#1D9E75";
@@ -18,6 +20,26 @@ const CHAT_URL = "https://colin-73.app.n8n.cloud/webhook/66beb48f-e1ab-4137-957c
 export default function SortdLandingPage() {
   const [formData, setFormData] = useState({ name: "", agency: "", email: "", phone: "" });
   const [submitted, setSubmitted] = useState(false);
+
+  useEffect(() => {
+    createChat({
+      webhookUrl: CHAT_URL,
+      mode: 'window',
+      showWelcomeScreen: false,
+      initialMessages: [
+        "Hi! I'm Sortd. Let's find your perfect holiday. Who's travelling — couple, family, friends, or solo? And how many people in your group?"
+      ],
+      i18n: {
+        en: {
+          title: 'Sortd',
+          subtitle: 'AI holiday matcher — find your perfect trip',
+          footer: '',
+          getStarted: 'Start a conversation',
+          inputPlaceholder: 'Type your message...',
+        },
+      },
+    });
+  }, []);
 
   const handleSubmit = () => {
     if (formData.name && formData.email) setSubmitted(true);
@@ -195,11 +217,8 @@ export default function SortdLandingPage() {
             <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke={TEAL} strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
           </div>
           <h3 style={{ margin: "0 0 12px", fontSize: 20, fontWeight: 500, color: TEXT }}>Start a live conversation with Sortd</h3>
-          <p style={{ margin: "0 0 28px", fontSize: 15, color: TEXT_MED, lineHeight: 1.6 }}>Ask about a real holiday — Sortd will qualify your enquiry and recommend best-fit destinations. Takes about 3 minutes.</p>
-          <a href={CHAT_URL} target="_blank" rel="noopener noreferrer" style={{ background: TEAL_DARK, color: "white", borderRadius: 8, padding: "13px 32px", fontSize: 15, fontWeight: 500, textDecoration: "none", display: "inline-block" }}>
-            Start the demo
-          </a>
-          <p style={{ margin: "16px 0 0", fontSize: 12, color: TEXT_DIM }}>Opens in a new tab. No sign-up needed.</p>
+          <p style={{ margin: "0 0 28px", fontSize: 15, color: TEXT_MED, lineHeight: 1.6 }}>Click the chat bubble in the bottom right corner to start a real conversation with Sortd. Takes about 3 minutes.</p>
+          <p style={{ margin: 0, fontSize: 12, color: TEXT_DIM }}>No sign-up needed. Just start chatting.</p>
         </div>
       </section>
 
