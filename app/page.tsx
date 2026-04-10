@@ -1,8 +1,5 @@
 "use client";
-export const dynamic = 'force-dynamic';
-import { useEffect, useState } from 'react';
-import '@n8n/chat/style.css';
-import { createChat } from '@n8n/chat';
+import { useState, useRef, useEffect } from 'react';
 
 const TEAL = "#3ECFA0";
 const TEAL_DARK = "#1D9E75";
@@ -18,30 +15,53 @@ const TEXT_DIM = "#4A7A63";
 
 const CHAT_URL = "https://colin-73.app.n8n.cloud/webhook/66beb48f-e1ab-4137-957c-d8a294024560/chat";
 
+interface Message {
+  role: 'bot' | 'user';
+  text: string;
+}
+
 export default function SortdLandingPage() {
   const [formData, setFormData] = useState({ name: "", agency: "", email: "", phone: "" });
   const [submitted, setSubmitted] = useState(false);
+  const [messages, setMessages] = useState<Message[]>([
+    { role: 'bot', text: "Hi! I'm Sortd. Let's find your perfect holiday. Who's travelling — couple, family, friends, or solo? And how many people in your group?" }
+  ]);
+  const [input, setInput] = useState('');
+  const [loading, setLoading] = useState(false);
+  const [sessionId] = useState(() => Math.random().toString(36).substring(2));
+  const messagesEndRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    createChat({
-      webhookUrl: CHAT_URL,
-      mode: 'window',
-      showWelcomeScreen: false,
-      initialMessages: [
-        "Hi! I'm Sortd. Let's find your perfect holiday. Who's travelling — couple, family, friends, or solo? And how many people in your group?"
-      ],
-      i18n: {
-  en: {
-    title: 'Sortd',
-    subtitle: 'AI holiday matcher — find your perfect trip',
-    footer: '',
-    getStarted: 'Start a conversation',
-    inputPlaceholder: 'Type your message...',
-    closeButtonTooltip: 'Close chat',
-  },
-},
-    });
-  }, []);
+    messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
+  }, [messages]);
+
+  const sendMessage = async () => {
+    if (!input.trim() || loading) return;
+    const userMessage = input.trim();
+    setInput('');
+    setMessages(prev => [...prev, { role: 'user', text: userMessage }]);
+    setLoading(true);
+    try {
+      const response = await fetch(CHAT_URL, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ chatInput: userMessage, sessionId }),
+      });
+      const data = await response.json();
+      const botReply = data.output || data.text || data.message || "I'm sorry, I couldn't process that. Please try again.";
+      setMessages(prev => [...prev, { role: 'bot', text: botReply }]);
+    } catch {
+      setMessages(prev => [...prev, { role: 'bot', text: "Sorry, something went wrong. Please try again." }]);
+    }
+    setLoading(false);
+  };
+
+  const handleKeyDown = (e: React.KeyboardEvent) => {
+    if (e.key === 'Enter' && !e.shiftKey) {
+      e.preventDefault();
+      sendMessage();
+    }
+  };
 
   const handleSubmit = () => {
     if (formData.name && formData.email) setSubmitted(true);
@@ -205,6 +225,7 @@ export default function SortdLandingPage() {
         </div>
       </section>
 
+      {/* Live Chat Demo */}
       <section id="try-sortd" style={{ maxWidth: 1100, margin: "0 auto", padding: "5rem 2rem" }}>
         <div style={{ textAlign: "center", maxWidth: 600, margin: "0 auto 48px" }}>
           <div style={{ display: "inline-flex", alignItems: "center", gap: 6, background: TEAL_DIM, color: TEAL, fontSize: 13, fontWeight: 500, padding: "5px 14px", borderRadius: 20, marginBottom: 20, border: `0.5px solid ${BORDER_MED}` }}>
@@ -212,16 +233,65 @@ export default function SortdLandingPage() {
             Live demo
           </div>
           <h2 style={{ fontSize: 38, fontWeight: 500, margin: "0 0 16px", letterSpacing: "-0.5px", color: TEXT }}>Try Sortd right now</h2>
-          <p style={{ fontSize: 17, color: TEXT_MED, margin: 0, lineHeight: 1.7 }}>This is the real thing — not a mockup. Have a conversation with Sortd and see exactly what your customers would experience and what you'd receive as a lead.</p>
+          <p style={{ fontSize: 17, color: TEXT_MED, margin: 0, lineHeight: 1.7 }}>This is the real thing — not a mockup. Have a real conversation with Sortd and see exactly what your customers would experience.</p>
         </div>
-        <div style={{ background: BG2, borderRadius: 16, border: `0.5px solid ${BORDER_MED}`, maxWidth: 800, margin: "0 auto", padding: "48px 32px", textAlign: "center" }}>
-          <div style={{ width: 64, height: 64, background: TEAL_DIM, borderRadius: "50%", display: "flex", alignItems: "center", justifyContent: "center", margin: "0 auto 20px" }}>
-            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke={TEAL} strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+
+        <div style={{ maxWidth: 700, margin: "0 auto", background: BG2, borderRadius: 16, border: `0.5px solid ${BORDER_MED}`, overflow: "hidden" }}>
+          {/* Chat header */}
+          <div style={{ padding: "16px 20px", borderBottom: `0.5px solid ${BORDER}`, display: "flex", alignItems: "center", gap: 12 }}>
+            <div style={{ width: 36, height: 36, borderRadius: "50%", background: TEAL_DARK, display: "flex", alignItems: "center", justifyContent: "center" }}>
+              <span style={{ fontSize: 15, color: "white", fontWeight: 500 }}>S</span>
+            </div>
+            <div>
+              <p style={{ margin: 0, fontSize: 14, fontWeight: 500, color: TEXT }}>Sortd</p>
+              <p style={{ margin: 0, fontSize: 12, color: TEXT_DIM }}>Holiday Matcher</p>
+            </div>
+            <div style={{ marginLeft: "auto", display: "flex", alignItems: "center", gap: 6 }}>
+              <div style={{ width: 6, height: 6, borderRadius: "50%", background: TEAL }}></div>
+              <span style={{ fontSize: 12, color: TEXT_MED }}>Online</span>
+            </div>
           </div>
-          <h3 style={{ margin: "0 0 12px", fontSize: 20, fontWeight: 500, color: TEXT }}>Start a live conversation with Sortd</h3>
-          <p style={{ margin: "0 0 28px", fontSize: 15, color: TEXT_MED, lineHeight: 1.6 }}>Click the chat bubble in the bottom right corner to start a real conversation with Sortd. Takes about 3 minutes.</p>
-          <p style={{ margin: 0, fontSize: 12, color: TEXT_DIM }}>No sign-up needed. Just start chatting.</p>
+
+          {/* Messages */}
+          <div style={{ height: 400, overflowY: "auto", padding: 20, display: "flex", flexDirection: "column", gap: 12 }}>
+            {messages.map((msg, i) => (
+              <div key={i} style={{ display: "flex", justifyContent: msg.role === "user" ? "flex-end" : "flex-start" }}>
+                <div style={{ maxWidth: "75%", padding: "10px 14px", borderRadius: msg.role === "user" ? "14px 14px 2px 14px" : "14px 14px 14px 2px", background: msg.role === "user" ? TEAL_DARK : BG3, fontSize: 14, lineHeight: 1.6, color: msg.role === "user" ? "white" : TEXT, border: msg.role === "bot" ? `0.5px solid ${BORDER}` : "none", whiteSpace: "pre-wrap" }}>
+                  {msg.text}
+                </div>
+              </div>
+            ))}
+            {loading && (
+              <div style={{ display: "flex", justifyContent: "flex-start" }}>
+                <div style={{ padding: "10px 14px", borderRadius: "14px 14px 14px 2px", background: BG3, border: `0.5px solid ${BORDER}`, display: "flex", gap: 4, alignItems: "center" }}>
+                  <div style={{ width: 6, height: 6, borderRadius: "50%", background: TEAL, opacity: 0.6 }}></div>
+                  <div style={{ width: 6, height: 6, borderRadius: "50%", background: TEAL, opacity: 0.8 }}></div>
+                  <div style={{ width: 6, height: 6, borderRadius: "50%", background: TEAL }}></div>
+                </div>
+              </div>
+            )}
+            <div ref={messagesEndRef} />
+          </div>
+
+          {/* Input */}
+          <div style={{ padding: "12px 16px", borderTop: `0.5px solid ${BORDER}`, display: "flex", gap: 10, alignItems: "center" }}>
+            <input
+              value={input}
+              onChange={(e) => setInput(e.target.value)}
+              onKeyDown={handleKeyDown}
+              placeholder="Type your message..."
+              style={{ flex: 1, background: BG3, border: `0.5px solid ${BORDER_MED}`, borderRadius: 8, padding: "10px 14px", fontSize: 14, color: TEXT, outline: "none" }}
+            />
+            <button
+              onClick={sendMessage}
+              disabled={loading || !input.trim()}
+              style={{ width: 40, height: 40, background: input.trim() ? TEAL_DARK : BG3, border: `0.5px solid ${BORDER_MED}`, borderRadius: 8, cursor: input.trim() ? "pointer" : "default", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}
+            >
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M22 2L11 13M22 2L15 22l-4-9-9-4 20-7z"/></svg>
+            </button>
+          </div>
         </div>
+        <p style={{ textAlign: "center", margin: "16px 0 0", fontSize: 12, color: TEXT_DIM }}>Real conversation. No sign-up needed.</p>
       </section>
 
       <section style={{ background: BG2, borderTop: `0.5px solid ${BORDER}`, borderBottom: `0.5px solid ${BORDER}` }}>
