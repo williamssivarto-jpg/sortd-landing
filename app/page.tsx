@@ -48,7 +48,7 @@ export default function SortdLandingPage() {
         body: JSON.stringify({ chatInput: userMessage, sessionId }),
       });
       const data = await response.json();
-      const botReply = data.output || data.text || data.message || "I'm sorry, I couldn't process that. Please try again.";
+      const botReply = data.output?.customerReply || data.output || data.text || data.message || "I'm sorry, I couldn't process that. Please try again.";
       setMessages(prev => [...prev, { role: 'bot', text: botReply }]);
     } catch {
       setMessages(prev => [...prev, { role: 'bot', text: "Sorry, something went wrong. Please try again." }]);
