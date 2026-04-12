@@ -67,10 +67,11 @@ export default function SortdLandingPage() {
     if (!formData.name || !formData.email) return;
     try {
       await fetch('https://colin-73.app.n8n.cloud/webhook/sortd-demo', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(formData),
-      });
+  method: 'POST',
+  headers: { 'Content-Type': 'application/json' },
+  body: JSON.stringify(formData),
+  mode: 'no-cors',
+});
     } catch {
       console.error('Form submission failed');
     }
