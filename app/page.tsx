@@ -32,7 +32,7 @@ export default function SortdLandingPage() {
   const messagesEndRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-   messagesEndRef.current?.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    messagesEndRef.current?.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
   }, [messages]);
 
   const sendMessage = async () => {
@@ -63,29 +63,24 @@ export default function SortdLandingPage() {
     }
   };
 
- const handleSubmit = async () => {
-  if (!formData.name || !formData.email) return;
+  const handleSubmit = async () => {
+    if (!formData.name || !formData.email) return;
 
-  try {
-    const res = await fetch('/api/sortd-demo', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(formData),
-    });
+    try {
+      const res = await fetch('/api/sortd-demo', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(formData),
+      });
 
-    if (!res.ok) {
-      throw new Error('Form submission failed');
+      if (!res.ok) {
+        throw new Error('Form submission failed');
+      }
+
+      setSubmitted(true);
+    } catch (err) {
+      console.error('Form submission failed', err);
     }
-
-    setSubmitted(true);
-  } catch (err) {
-    console.error('Form submission failed', err);
-  }
-};
-    } catch {
-      console.error('Form submission failed');
-    }
-    setSubmitted(true);
   };
 
   const Check = () => (
@@ -246,7 +241,6 @@ export default function SortdLandingPage() {
         </div>
       </section>
 
-      {/* Live Chat Demo */}
       <section id="try-sortd" style={{ maxWidth: 1100, margin: "0 auto", padding: "5rem 2rem" }}>
         <div style={{ textAlign: "center", maxWidth: 600, margin: "0 auto 48px" }}>
           <div style={{ display: "inline-flex", alignItems: "center", gap: 6, background: TEAL_DIM, color: TEAL, fontSize: 13, fontWeight: 500, padding: "5px 14px", borderRadius: 20, marginBottom: 20, border: `0.5px solid ${BORDER_MED}` }}>
@@ -258,7 +252,6 @@ export default function SortdLandingPage() {
         </div>
 
         <div style={{ maxWidth: 700, margin: "0 auto", background: BG2, borderRadius: 16, border: `0.5px solid ${BORDER_MED}`, overflow: "hidden" }}>
-          {/* Chat header */}
           <div style={{ padding: "16px 20px", borderBottom: `0.5px solid ${BORDER}`, display: "flex", alignItems: "center", gap: 12 }}>
             <div style={{ width: 36, height: 36, borderRadius: "50%", background: TEAL_DARK, display: "flex", alignItems: "center", justifyContent: "center" }}>
               <span style={{ fontSize: 15, color: "white", fontWeight: 500 }}>S</span>
@@ -273,7 +266,6 @@ export default function SortdLandingPage() {
             </div>
           </div>
 
-          {/* Messages */}
           <div style={{ height: 400, overflowY: "auto", padding: 20, display: "flex", flexDirection: "column", gap: 12 }}>
             {messages.map((msg, i) => (
               <div key={i} style={{ display: "flex", justifyContent: msg.role === "user" ? "flex-end" : "flex-start" }}>
@@ -294,7 +286,6 @@ export default function SortdLandingPage() {
             <div ref={messagesEndRef} />
           </div>
 
-          {/* Input */}
           <div style={{ padding: "12px 16px", borderTop: `0.5px solid ${BORDER}`, display: "flex", gap: 10, alignItems: "center" }}>
             <input
               value={input}
@@ -381,7 +372,7 @@ export default function SortdLandingPage() {
               <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
                 {plan.features.map((f) => (
                   <div key={f} style={{ display: "flex", alignItems: "center", gap: 8, fontSize: 14, color: TEXT_MED }}>
-                    <Check/>{f}
+                    <Check />{f}
                   </div>
                 ))}
               </div>
@@ -400,7 +391,7 @@ export default function SortdLandingPage() {
               <div style={{ display: "flex", flexDirection: "column", gap: 16 }}>
                 {["We set everything up — no tech knowledge needed", "Fast setup for pilot clients", "Cancel any time, no long contracts"].map((item) => (
                   <div key={item} style={{ display: "flex", alignItems: "center", gap: 10, fontSize: 15, color: TEXT_MED }}>
-                    <Check/>{item}
+                    <Check />{item}
                   </div>
                 ))}
               </div>
