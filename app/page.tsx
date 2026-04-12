@@ -63,8 +63,18 @@ export default function SortdLandingPage() {
     }
   };
 
-  const handleSubmit = () => {
-    if (formData.name && formData.email) setSubmitted(true);
+  const handleSubmit = async () => {
+    if (!formData.name || !formData.email) return;
+    try {
+      await fetch('https://colin-73.app.n8n.cloud/webhook/sortd-demo', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(formData),
+      });
+    } catch {
+      console.error('Form submission failed');
+    }
+    setSubmitted(true);
   };
 
   const Check = () => (
