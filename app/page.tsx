@@ -114,15 +114,15 @@ export default function SortdLandingPage() {
           <div>
             <div style={{ display: "inline-flex", alignItems: "center", gap: 6, background: TEAL_DIM, color: TEAL, fontSize: 13, fontWeight: 500, padding: "5px 14px", borderRadius: 20, marginBottom: 28, border: `0.5px solid ${BORDER_MED}` }}>
               <div style={{ width: 6, height: 6, borderRadius: "50%", background: TEAL }}></div>
-              AI holiday matcher for travel agencies
+              Turn website visitors into qualified holiday enquiries
             </div>
             <h1 style={{ fontSize: 50, fontWeight: 500, lineHeight: 1.1, letterSpacing: "-1.5px", margin: "0 0 24px", color: TEXT }}>
-              Turn more holiday enquiries<br/>
+              Turn vague holiday enquiries<br/>
               into qualified leads.<br/>
               <span style={{ color: TEAL }}>24/7.</span>
             </h1>
             <p style={{ fontSize: 18, color: TEXT_MED, lineHeight: 1.75, margin: "0 0 36px", maxWidth: 480 }}>
-              Sortd is a branded AI holiday matchmaker that sits on your website, asks the right questions, recommends best-fit trips, and sends a warm qualified lead straight to your inbox.
+              Sortd is a branded website assistant for travel agents that asks the right questions, recommends suitable trips, and sends warm, qualified leads straight to your inbox.
             </p>
             <div style={{ display: "flex", gap: 12, flexWrap: "wrap", marginBottom: 24 }}>
               <a href="#try-sortd" style={{ background: TEAL_DARK, color: "white", padding: "13px 26px", borderRadius: 8, fontSize: 15, fontWeight: 500, textDecoration: "none" }}>Try Sortd live</a>
@@ -311,7 +311,7 @@ export default function SortdLandingPage() {
           <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 64, alignItems: "start" }}>
             <div>
               <h2 style={{ fontSize: 38, fontWeight: 500, margin: "0 0 16px", letterSpacing: "-0.5px", color: TEXT }}>Built for independent travel agents</h2>
-              <p style={{ fontSize: 17, color: TEXT_MED, lineHeight: 1.75, margin: "0 0 32px" }}>Sortd gives smaller agencies the kind of lead qualification normally reserved for bigger operators — without the heavy setup or enterprise price tag.</p>
+              <p style={{ fontSize: 17, color: TEXT_MED, lineHeight: 1.75, margin: "0 0 32px" }}>Sortd gives independent travel agents a smarter way to capture and qualify website enquiries without adding admin or relying on generic contact forms.</p>
               <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 10 }}>
                 {["Independent travel agents", "Homeworking agents", "Small agencies", "Destination specialists", "Luxury travel advisors", "Family holiday agencies"].map((item) => (
                   <div key={item} style={{ display: "flex", alignItems: "center", gap: 8, padding: "10px 14px", border: `0.5px solid ${BORDER}`, borderRadius: 8, fontSize: 13, background: BG3, color: TEXT_MED }}>
@@ -355,14 +355,14 @@ export default function SortdLandingPage() {
       </section>
 
       <section id="pricing" style={{ maxWidth: 1100, margin: "0 auto", padding: "5rem 2rem" }}>
-        <div style={{ textAlign: "center", maxWidth: 500, margin: "0 auto 48px" }}>
-          <h2 style={{ fontSize: 38, fontWeight: 500, margin: "0 0 12px", letterSpacing: "-0.5px", color: TEXT }}>Simple pricing</h2>
-          <p style={{ fontSize: 17, color: TEXT_MED, margin: 0 }}>Simple setup, simple monthly support.</p>
+        <div style={{ textAlign: "center", maxWidth: 600, margin: "0 auto 48px" }}>
+          <h2 style={{ fontSize: 38, fontWeight: 500, margin: "0 0 12px", letterSpacing: "-0.5px", color: TEXT }}>Done-for-you setup. Simple monthly support.</h2>
+          <p style={{ fontSize: 17, color: TEXT_MED, margin: 0 }}>We handle everything. You just get the leads.</p>
         </div>
         <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 20, maxWidth: 700, margin: "0 auto" }}>
           {[
-            { name: "Setup", price: "£250", desc: "We configure Sortd for your agency, brand it to match your site, and install it. One-off payment.", features: ["Full setup and configuration", "Branded to your agency", "Installed on your website", "Testing and sign-off"] },
-            { name: "Monthly", price: "£65/mo", desc: "Sortd stays live, maintained and updated. Cancel any time.", features: ["Sortd live on your site 24/7", "Lead summaries by email", "Lead scoring and logging", "Updates included"], featured: true },
+            { name: "Setup", price: "£495", desc: "We configure Sortd for your agency, brand it to match your site, install it on your website, and test everything before launch. One-off payment.", features: ["Full setup and configuration", "Branded to your agency", "Installed on your website", "Testing and sign-off"] },
+            { name: "Monthly", price: "£149/mo", desc: "Sortd stays live on your site with lead delivery, scoring, maintenance, and updates included. Cancel any time.", features: ["Sortd live on your site 24/7", "Lead summaries by email", "Lead scoring and logging", "Ongoing updates and support"], featured: true },
           ].map((plan) => (
             <div key={plan.name} style={{ background: BG2, border: plan.featured ? `1.5px solid ${TEAL_DARK}` : `0.5px solid ${BORDER}`, borderRadius: 12, padding: 28, position: "relative" }}>
               {plan.featured && <div style={{ position: "absolute", top: -12, left: 20, background: TEAL_DARK, color: "white", fontSize: 12, fontWeight: 500, padding: "3px 12px", borderRadius: 20 }}>Ongoing</div>}
@@ -379,7 +379,7 @@ export default function SortdLandingPage() {
             </div>
           ))}
         </div>
-        <p style={{ margin: "18px 0 0", textAlign: "center", fontSize: 12, color: TEXT_DIM }}>Early pricing shown for pilot clients and subject to refinement.</p>
+        <p style={{ margin: "18px 0 0", textAlign: "center", fontSize: 12, color: TEXT_DIM }}>Founder pricing available for a limited number of pilot clients.</p>
       </section>
 
       <section id="demo" style={{ background: BG2, borderTop: `0.5px solid ${BORDER}`, borderBottom: `0.5px solid ${BORDER}` }}>
