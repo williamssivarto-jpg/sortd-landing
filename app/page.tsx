@@ -94,9 +94,23 @@ export default function SortdLandingPage() {
   );
 
   return (
-    <div style={{ fontFamily: "var(--font-sans)", color: TEXT, background: BG, minHeight: "100vh" }}>
+    <div style={{ fontFamily: "var(--font-sans)", color: TEXT, background: BG, minHeight: "100vh", overflowX: "hidden" }}>
+      <style>{`
+        html, body { background: ${BG}; overflow-x: hidden; }
+        @media (max-width: 800px) {
+          .sd-nav { padding: 0 1rem !important; }
+          .sd-nav-link { display: none !important; }
+          .sd-section { padding-left: 1.25rem !important; padding-right: 1.25rem !important; padding-top: 3.5rem !important; padding-bottom: 3.5rem !important; }
+          .sd-stack { grid-template-columns: 1fr !important; gap: 32px !important; }
+          .sd-stats { grid-template-columns: 1fr 1fr !important; }
+          .sd-step-line { display: none !important; }
+          .sd-h1 { font-size: 36px !important; letter-spacing: -1px !important; }
+          .sd-h1 br { display: none; }
+          .sd-h2 { font-size: 28px !important; }
+        }
+      `}</style>
 
-      <nav style={{ borderBottom: `0.5px solid ${BORDER}`, padding: "0 2rem", position: "sticky", top: 0, background: `${BG}F2`, zIndex: 100 }}>
+      <nav className="sd-nav" style={{ borderBottom: `0.5px solid ${BORDER}`, padding: "0 2rem", position: "sticky", top: 0, background: `${BG}F2`, zIndex: 100 }}>
         <div style={{ maxWidth: 1100, margin: "0 auto", display: "flex", alignItems: "center", justifyContent: "space-between", height: 64 }}>
           <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
             <div style={{ width: 34, height: 34, background: TEAL_DARK, borderRadius: 9, display: "flex", alignItems: "center", justifyContent: "center" }}>
@@ -107,24 +121,24 @@ export default function SortdLandingPage() {
             <span style={{ fontSize: 20, fontWeight: 500, letterSpacing: "-0.5px", color: TEXT }}>Sortd</span>
           </div>
           <div style={{ display: "flex", gap: 12, alignItems: "center" }}>
-            <a href="#how-it-works" style={{ fontSize: 14, color: TEXT_MED, textDecoration: "none" }}>How it works</a>
-            <a href="#try-sortd" style={{ fontSize: 14, color: TEXT_MED, textDecoration: "none" }}>Try it live</a>
-            <a href="#pricing" style={{ fontSize: 14, color: TEXT_MED, textDecoration: "none" }}>Pricing</a>
+            <a className="sd-nav-link" href="#how-it-works" style={{ fontSize: 14, color: TEXT_MED, textDecoration: "none" }}>How it works</a>
+            <a className="sd-nav-link" href="#try-sortd" style={{ fontSize: 14, color: TEXT_MED, textDecoration: "none" }}>Try it live</a>
+            <a className="sd-nav-link" href="#pricing" style={{ fontSize: 14, color: TEXT_MED, textDecoration: "none" }}>Pricing</a>
             <a href="#demo" style={{ fontSize: 14, fontWeight: 500, background: TEAL_DARK, color: "white", padding: "8px 18px", borderRadius: 8, textDecoration: "none" }}>Book a demo</a>
           </div>
         </div>
       </nav>
 
-      <section style={{ maxWidth: 1100, margin: "0 auto", padding: "6rem 2rem 5rem" }}>
-        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 72, alignItems: "center" }}>
+      <section className="sd-section" style={{ maxWidth: 1100, margin: "0 auto", padding: "6rem 2rem 5rem" }}>
+        <div className="sd-stack" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 72, alignItems: "center" }}>
           <div>
             <div style={{ display: "inline-flex", alignItems: "center", gap: 6, background: TEAL_DIM, color: TEAL, fontSize: 13, fontWeight: 500, padding: "5px 14px", borderRadius: 20, marginBottom: 28, border: `0.5px solid ${BORDER_MED}` }}>
               <div style={{ width: 6, height: 6, borderRadius: "50%", background: TEAL }}></div>
               Turn website visitors into qualified holiday enquiries
             </div>
-            <h1 style={{ fontSize: 50, fontWeight: 500, lineHeight: 1.1, letterSpacing: "-1.5px", margin: "0 0 24px", color: TEXT }}>
-              Turn vague holiday enquiries<br/>
-              into qualified leads.<br/>
+            <h1 className="sd-h1" style={{ fontSize: 50, fontWeight: 500, lineHeight: 1.1, letterSpacing: "-1.5px", margin: "0 0 24px", color: TEXT }}>
+              Turn vague holiday enquiries{" "}<br/>
+              into qualified leads.{" "}<br/>
               <span style={{ color: TEAL }}>24/7.</span>
             </h1>
             <p style={{ fontSize: 18, color: TEXT_MED, lineHeight: 1.75, margin: "0 0 36px", maxWidth: 480 }}>
@@ -183,7 +197,7 @@ export default function SortdLandingPage() {
       </section>
 
       <div style={{ borderTop: `0.5px solid ${BORDER}`, borderBottom: `0.5px solid ${BORDER}`, background: BG2 }}>
-        <div style={{ maxWidth: 1100, margin: "0 auto", padding: "1.75rem 2rem", display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: 16 }}>
+        <div style={{ maxWidth: 1100, margin: "0 auto", padding: "1.75rem 2rem", display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: 16 }} className="sd-stats">
           {[
             { stat: "24/7", label: "Lead capture, even when you're closed" },
             { stat: "10 questions", label: "Full qualification in minutes" },
@@ -198,12 +212,12 @@ export default function SortdLandingPage() {
         </div>
       </div>
 
-      <section style={{ maxWidth: 1100, margin: "0 auto", padding: "5rem 2rem" }}>
+      <section className="sd-section" style={{ maxWidth: 1100, margin: "0 auto", padding: "5rem 2rem" }}>
         <div style={{ maxWidth: 600, marginBottom: 48 }}>
-          <h2 style={{ fontSize: 38, fontWeight: 500, margin: "0 0 16px", letterSpacing: "-0.5px", color: TEXT }}>What Sortd does for your agency</h2>
+          <h2 className="sd-h2" style={{ fontSize: 38, fontWeight: 500, margin: "0 0 16px", letterSpacing: "-0.5px", color: TEXT }}>What Sortd does for your agency</h2>
           <p style={{ fontSize: 17, color: TEXT_MED, lineHeight: 1.75, margin: 0 }}>Sortd turns vague enquiries into warm, qualified leads so you spend less time chasing weak prospects and more time closing bookings.</p>
         </div>
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 16 }}>
+        <div className="sd-stack" style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 16 }}>
           {[
             { icon: "M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z", title: "Qualifies every enquiry", desc: "Budget, dates, airport, holiday style, weather, must-haves and deal breakers — all captured before your team makes contact." },
             { icon: "M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7", title: "Recommends 3 best matches", desc: "Best overall, best value, and a wildcard. Each comes with a destination, reason, weather, and budget fit." },
@@ -224,9 +238,9 @@ export default function SortdLandingPage() {
       </section>
 
       <section id="how-it-works" style={{ background: BG2, borderTop: `0.5px solid ${BORDER}`, borderBottom: `0.5px solid ${BORDER}` }}>
-        <div style={{ maxWidth: 1100, margin: "0 auto", padding: "5rem 2rem" }}>
-          <h2 style={{ fontSize: 38, fontWeight: 500, margin: "0 0 48px", letterSpacing: "-0.5px", color: TEXT }}>How it works</h2>
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(5, 1fr)", gap: 16, position: "relative" }}>
+        <div className="sd-section" style={{ maxWidth: 1100, margin: "0 auto", padding: "5rem 2rem" }}>
+          <h2 className="sd-h2" style={{ fontSize: 38, fontWeight: 500, margin: "0 0 48px", letterSpacing: "-0.5px", color: TEXT }}>How it works</h2>
+          <div className="sd-stack" style={{ display: "grid", gridTemplateColumns: "repeat(5, 1fr)", gap: 16, position: "relative" }}>
             {[
               { num: "1", title: "Visitor starts a chat", desc: "A visitor on your website opens Sortd and starts a conversation." },
               { num: "2", title: "Sortd qualifies the lead", desc: "Natural questions covering who, when, where, budget, style, and priorities." },
@@ -235,7 +249,7 @@ export default function SortdLandingPage() {
               { num: "5", title: "You follow up", desc: "Call with full context — budget, priorities, lead score, and best contact time." },
             ].map((step, i) => (
               <div key={step.num} style={{ position: "relative" }}>
-                {i < 4 && <div style={{ position: "absolute", top: 20, left: "60%", right: "-40%", height: "0.5px", background: BORDER_MED, zIndex: 0 }}></div>}
+                {i < 4 && <div className="sd-step-line" style={{ position: "absolute", top: 20, left: "60%", right: "-40%", height: "0.5px", background: BORDER_MED, zIndex: 0 }}></div>}
                 <div style={{ position: "relative", zIndex: 1 }}>
                   <div style={{ width: 40, height: 40, borderRadius: "50%", background: TEAL_DARK, color: "white", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 15, fontWeight: 500, marginBottom: 16 }}>{step.num}</div>
                   <h3 style={{ margin: "0 0 8px", fontSize: 14, fontWeight: 500, color: TEXT }}>{step.title}</h3>
@@ -247,13 +261,13 @@ export default function SortdLandingPage() {
         </div>
       </section>
 
-      <section id="try-sortd" style={{ maxWidth: 1100, margin: "0 auto", padding: "5rem 2rem" }}>
+      <section id="try-sortd" className="sd-section" style={{ maxWidth: 1100, margin: "0 auto", padding: "5rem 2rem" }}>
         <div style={{ textAlign: "center", maxWidth: 600, margin: "0 auto 48px" }}>
           <div style={{ display: "inline-flex", alignItems: "center", gap: 6, background: TEAL_DIM, color: TEAL, fontSize: 13, fontWeight: 500, padding: "5px 14px", borderRadius: 20, marginBottom: 20, border: `0.5px solid ${BORDER_MED}` }}>
             <div style={{ width: 6, height: 6, borderRadius: "50%", background: TEAL }}></div>
             Live demo
           </div>
-          <h2 style={{ fontSize: 38, fontWeight: 500, margin: "0 0 16px", letterSpacing: "-0.5px", color: TEXT }}>Try Sortd right now</h2>
+          <h2 className="sd-h2" style={{ fontSize: 38, fontWeight: 500, margin: "0 0 16px", letterSpacing: "-0.5px", color: TEXT }}>Try Sortd right now</h2>
           <p style={{ fontSize: 17, color: TEXT_MED, margin: 0, lineHeight: 1.7 }}>This is the real thing — not a mockup. Have a real conversation with Sortd and see exactly what your customers would experience.</p>
         </div>
 
@@ -313,10 +327,10 @@ export default function SortdLandingPage() {
       </section>
 
       <section style={{ background: BG2, borderTop: `0.5px solid ${BORDER}`, borderBottom: `0.5px solid ${BORDER}` }}>
-        <div style={{ maxWidth: 1100, margin: "0 auto", padding: "5rem 2rem" }}>
-          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 64, alignItems: "start" }}>
+        <div className="sd-section" style={{ maxWidth: 1100, margin: "0 auto", padding: "5rem 2rem" }}>
+          <div className="sd-stack" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 64, alignItems: "start" }}>
             <div>
-              <h2 style={{ fontSize: 38, fontWeight: 500, margin: "0 0 16px", letterSpacing: "-0.5px", color: TEXT }}>Built for independent travel agents</h2>
+              <h2 className="sd-h2" style={{ fontSize: 38, fontWeight: 500, margin: "0 0 16px", letterSpacing: "-0.5px", color: TEXT }}>Built for independent travel agents</h2>
               <p style={{ fontSize: 17, color: TEXT_MED, lineHeight: 1.75, margin: "0 0 32px" }}>Sortd gives independent travel agents a smarter way to capture and qualify website enquiries without adding admin or relying on generic contact forms.</p>
               <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 10 }}>
                 {["Independent travel agents", "Homeworking agents", "Small agencies", "Destination specialists", "Luxury travel advisors", "Family holiday agencies"].map((item) => (
@@ -360,12 +374,12 @@ export default function SortdLandingPage() {
         </div>
       </section>
 
-      <section id="pricing" style={{ maxWidth: 1100, margin: "0 auto", padding: "5rem 2rem" }}>
+      <section id="pricing" className="sd-section" style={{ maxWidth: 1100, margin: "0 auto", padding: "5rem 2rem" }}>
         <div style={{ textAlign: "center", maxWidth: 600, margin: "0 auto 48px" }}>
-          <h2 style={{ fontSize: 38, fontWeight: 500, margin: "0 0 12px", letterSpacing: "-0.5px", color: TEXT }}>Done-for-you setup. Simple monthly support.</h2>
+          <h2 className="sd-h2" style={{ fontSize: 38, fontWeight: 500, margin: "0 0 12px", letterSpacing: "-0.5px", color: TEXT }}>Done-for-you setup. Simple monthly support.</h2>
           <p style={{ fontSize: 17, color: TEXT_MED, margin: 0 }}>We handle everything. You just get the leads.</p>
         </div>
-        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 20, maxWidth: 700, margin: "0 auto" }}>
+        <div className="sd-stack" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 20, maxWidth: 700, margin: "0 auto" }}>
           {[
             { name: "Setup", price: "£495", desc: "We configure Sortd for your agency, brand it to match your site, install it on your website, and test everything before launch. One-off payment.", features: ["Full setup and configuration", "Branded to your agency", "Installed on your website", "Testing and sign-off"] },
             { name: "Monthly", price: "£149/mo", desc: "Sortd stays live on your site with lead delivery, scoring, maintenance, and updates included. Cancel any time.", features: ["Sortd live on your site 24/7", "Lead summaries by email", "Lead scoring and logging", "Ongoing updates and support"], featured: true },
@@ -389,10 +403,10 @@ export default function SortdLandingPage() {
       </section>
 
       <section id="demo" style={{ background: BG2, borderTop: `0.5px solid ${BORDER}`, borderBottom: `0.5px solid ${BORDER}` }}>
-        <div style={{ maxWidth: 1100, margin: "0 auto", padding: "5rem 2rem" }}>
-          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 64, alignItems: "center" }}>
+        <div className="sd-section" style={{ maxWidth: 1100, margin: "0 auto", padding: "5rem 2rem" }}>
+          <div className="sd-stack" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 64, alignItems: "center" }}>
             <div>
-              <h2 style={{ fontSize: 38, fontWeight: 500, margin: "0 0 16px", letterSpacing: "-0.5px", color: TEXT }}>See Sortd on your site</h2>
+              <h2 className="sd-h2" style={{ fontSize: 38, fontWeight: 500, margin: "0 0 16px", letterSpacing: "-0.5px", color: TEXT }}>See Sortd on your site</h2>
               <p style={{ fontSize: 17, color: TEXT_MED, lineHeight: 1.75, margin: "0 0 28px" }}>Book a 20-minute demo. We'll show you how Sortd works, how leads are delivered, and how quickly it could be live on your site.</p>
               <div style={{ display: "flex", flexDirection: "column", gap: 16 }}>
                 {["We set everything up — no tech knowledge needed", "Fast setup for pilot clients", "Cancel any time, no long contracts"].map((item) => (
