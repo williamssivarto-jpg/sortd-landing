@@ -11,7 +11,7 @@ const BORDER = "rgba(62,207,160,0.12)";
 const BORDER_MED = "rgba(62,207,160,0.22)";
 const TEXT = "#E8F5F0";
 const TEXT_MED = "#8BBFA8";
-const TEXT_DIM = "#4A7A63";
+const TEXT_DIM = "#6E9A86"; // lighter so small print is readable
 
 const CHAT_URL = "https://colin-73.app.n8n.cloud/webhook/66beb48f-e1ab-4137-957c-d8a294024560/chat";
 
@@ -148,7 +148,7 @@ export default function SortdLandingPage() {
               <a href="#try-sortd" style={{ background: TEAL_DARK, color: "white", padding: "13px 26px", borderRadius: 8, fontSize: 15, fontWeight: 500, textDecoration: "none" }}>Try Sortd live</a>
               <a href="#demo" style={{ border: `0.5px solid ${BORDER_MED}`, color: TEXT, padding: "13px 26px", borderRadius: 8, fontSize: 15, textDecoration: "none" }}>Book a demo</a>
             </div>
-            <p style={{ fontSize: 13, color: TEXT_DIM, margin: 0 }}>No tech knowledge needed. We set it up, you get the leads.</p>
+            <p style={{ fontSize: 13, color: TEXT_DIM, margin: 0 }}>No tech knowledge needed. Free 3-month pilot for our first three agencies.</p>
           </div>
 
           <div style={{ background: BG2, borderRadius: 18, border: `0.5px solid ${BORDER}`, padding: 20 }}>
@@ -224,7 +224,7 @@ export default function SortdLandingPage() {
             { icon: "M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z", title: "Delivers a warm lead", desc: "Your team gets a fully structured lead summary by email — priorities, budget, lead quality score, and best contact time." },
             { icon: "M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z", title: "Works while you sleep", desc: "Sortd runs 24/7. Late-night enquiries get the same quality response as a Monday morning call." },
             { icon: "M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z", title: "Feels like your brand", desc: "Configured for your agency, your tone, and your travel specialisms. Not a generic chatbot." },
-            { icon: "M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z", title: "Logs and scores every lead", desc: "Every completed enquiry logged with a hot, warm or cold quality score. Know who to call first." },
+            { icon: "M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z", title: "Logs and scores every lead", desc: "Every enquiry gets a score so you know who to call first. Hot: dates, budget and destination are clear. Warm: still deciding. Cold: just browsing." },
           ].map((item) => (
             <div key={item.title} style={{ background: BG2, border: `0.5px solid ${BORDER}`, borderRadius: 12, padding: "22px 20px" }}>
               <div style={{ width: 40, height: 40, background: TEAL_DIM, borderRadius: 10, display: "flex", alignItems: "center", justifyContent: "center", marginBottom: 16 }}>
@@ -268,7 +268,7 @@ export default function SortdLandingPage() {
             Live demo
           </div>
           <h2 className="sd-h2" style={{ fontSize: 38, fontWeight: 500, margin: "0 0 16px", letterSpacing: "-0.5px", color: TEXT }}>Try Sortd right now</h2>
-          <p style={{ fontSize: 17, color: TEXT_MED, margin: 0, lineHeight: 1.7 }}>This is the real thing — not a mockup. Have a real conversation with Sortd and see exactly what your customers would experience.</p>
+          <p style={{ fontSize: 17, color: TEXT_MED, margin: 0, lineHeight: 1.7 }}>This is the real thing, not a mockup. Plan a pretend holiday with Sortd and see exactly what your customers would experience.</p>
         </div>
 
         <div style={{ maxWidth: 700, margin: "0 auto", background: BG2, borderRadius: 16, border: `0.5px solid ${BORDER_MED}`, overflow: "hidden" }}>
@@ -323,7 +323,7 @@ export default function SortdLandingPage() {
             </button>
           </div>
         </div>
-        <p style={{ textAlign: "center", margin: "16px 0 0", fontSize: 12, color: TEXT_DIM }}>Real conversation. No sign-up needed. Sortd is an AI assistant, so please don&apos;t share personal details in the demo. <a href="/privacy" style={{ color: TEXT_MED }}>Privacy notice</a></p>
+        <p style={{ textAlign: "center", margin: "16px 0 0", fontSize: 12, color: TEXT_DIM }}>No sign-up needed. It&apos;s a live demo, so use made-up details rather than your real name or contact details. <a href="/privacy" style={{ color: TEXT_MED }}>Privacy notice</a></p>
       </section>
 
       <section style={{ background: BG2, borderTop: `0.5px solid ${BORDER}`, borderBottom: `0.5px solid ${BORDER}` }}>
@@ -376,18 +376,18 @@ export default function SortdLandingPage() {
 
       <section id="pricing" className="sd-section" style={{ maxWidth: 1100, margin: "0 auto", padding: "5rem 2rem" }}>
         <div style={{ textAlign: "center", maxWidth: 600, margin: "0 auto 48px" }}>
-          <h2 className="sd-h2" style={{ fontSize: 38, fontWeight: 500, margin: "0 0 12px", letterSpacing: "-0.5px", color: TEXT }}>Done-for-you setup. Simple monthly support.</h2>
-          <p style={{ fontSize: 17, color: TEXT_MED, margin: 0 }}>We handle everything. You just get the leads.</p>
+          <h2 className="sd-h2" style={{ fontSize: 38, fontWeight: 500, margin: "0 0 12px", letterSpacing: "-0.5px", color: TEXT }}>No setup fee. One simple monthly price.</h2>
+          <p style={{ fontSize: 17, color: TEXT_MED, margin: 0 }}>We set it up, brand it and install it for you at no extra cost.</p>
         </div>
         <div className="sd-stack" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 20, maxWidth: 700, margin: "0 auto" }}>
           {[
-            { name: "Setup", price: "£495", desc: "We configure Sortd for your agency, brand it to match your site, install it on your website, and test everything before launch. One-off payment.", features: ["Full setup and configuration", "Branded to your agency", "Installed on your website", "Testing and sign-off"] },
-            { name: "Monthly", price: "£149/mo", desc: "Sortd stays live on your site with lead delivery, scoring, maintenance, and updates included. Cancel any time.", features: ["Sortd live on your site 24/7", "Lead summaries by email", "Lead scoring and logging", "Ongoing updates and support"], featured: true },
+            { name: "Pilot", badge: "First 3 agencies", price: "Free for 3 months", desc: "Sortd set up, branded and live on your site, completely free for three months. No card needed. All we ask for is honest feedback on how it's working.", features: ["Full setup and branding included", "Installed and tested on your site", "Lead summaries and scoring", "No obligation to continue"], featured: true },
+            { name: "Monthly", price: "£149/mo", desc: "After the pilot, or from day one if you prefer. Sortd stays live with lead delivery, scoring, maintenance and updates included. Cancel any time.", features: ["No setup fee", "Sortd live on your site 24/7", "Lead summaries by email", "Ongoing updates and support"] },
           ].map((plan) => (
             <div key={plan.name} style={{ background: BG2, border: plan.featured ? `1.5px solid ${TEAL_DARK}` : `0.5px solid ${BORDER}`, borderRadius: 12, padding: 28, position: "relative" }}>
-              {plan.featured && <div style={{ position: "absolute", top: -12, left: 20, background: TEAL_DARK, color: "white", fontSize: 12, fontWeight: 500, padding: "3px 12px", borderRadius: 20 }}>Ongoing</div>}
+              {plan.badge && <div style={{ position: "absolute", top: -12, left: 20, background: TEAL_DARK, color: "white", fontSize: 12, fontWeight: 500, padding: "3px 12px", borderRadius: 20 }}>{plan.badge}</div>}
               <p style={{ margin: "0 0 4px", fontSize: 13, color: TEXT_MED }}>{plan.name}</p>
-              <p style={{ margin: "0 0 12px", fontSize: 34, fontWeight: 500, letterSpacing: "-0.5px", color: TEXT }}>{plan.price}</p>
+              <p style={{ margin: "0 0 12px", fontSize: 30, fontWeight: 500, letterSpacing: "-0.5px", color: TEXT }}>{plan.price}</p>
               <p style={{ margin: "0 0 20px", fontSize: 14, color: TEXT_MED, lineHeight: 1.5 }}>{plan.desc}</p>
               <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
                 {plan.features.map((f) => (
@@ -399,7 +399,7 @@ export default function SortdLandingPage() {
             </div>
           ))}
         </div>
-        <p style={{ margin: "18px 0 0", textAlign: "center", fontSize: 12, color: TEXT_DIM }}>Founder pricing available for a limited number of pilot clients.</p>
+        <p style={{ margin: "18px 0 0", textAlign: "center", fontSize: 13, color: TEXT_MED }}>Only three pilot places. <a href="#demo" style={{ color: TEAL }}>Book a demo</a> to claim one.</p>
       </section>
 
       <section id="demo" style={{ background: BG2, borderTop: `0.5px solid ${BORDER}`, borderBottom: `0.5px solid ${BORDER}` }}>
@@ -409,7 +409,7 @@ export default function SortdLandingPage() {
               <h2 className="sd-h2" style={{ fontSize: 38, fontWeight: 500, margin: "0 0 16px", letterSpacing: "-0.5px", color: TEXT }}>See Sortd on your site</h2>
               <p style={{ fontSize: 17, color: TEXT_MED, lineHeight: 1.75, margin: "0 0 28px" }}>Book a 20-minute demo. We'll show you how Sortd works, how leads are delivered, and how quickly it could be live on your site.</p>
               <div style={{ display: "flex", flexDirection: "column", gap: 16 }}>
-                {["We set everything up — no tech knowledge needed", "Fast setup for pilot clients", "Cancel any time, no long contracts"].map((item) => (
+                {["We set everything up — no tech knowledge needed", "Free for 3 months for our first three agencies", "Cancel any time, no long contracts"].map((item) => (
                   <div key={item} style={{ display: "flex", alignItems: "center", gap: 10, fontSize: 15, color: TEXT_MED }}>
                     <Check />{item}
                   </div>
@@ -469,12 +469,13 @@ export default function SortdLandingPage() {
             <span style={{ fontSize: 13, color: TEXT_DIM, marginLeft: 8 }}>AI holiday matching for independent travel agents</span>
           </div>
           <div style={{ display: "flex", gap: 20, flexWrap: "wrap", fontSize: 13 }}>
+            <a href="tel:07724335098" style={{ color: TEXT_MED, textDecoration: "none" }}>07724 335098</a>
             <a href="mailto:colin@colinwilliams.space" style={{ color: TEXT_MED, textDecoration: "none" }}>colin@colinwilliams.space</a>
             <a href="/privacy" style={{ color: TEXT_MED, textDecoration: "none" }}>Privacy notice</a>
           </div>
         </div>
         <p style={{ maxWidth: 1100, margin: "16px auto 0", fontSize: 12, color: TEXT_DIM }}>
-          &copy; 2026 Sortd. Built and run by <a href="https://colinwilliams.space" style={{ color: TEXT_DIM }}>Colin Williams</a>, Wolverhampton, UK.
+          &copy; 2026 Sortd. Run by <a href="https://colinwilliams.space" style={{ color: TEXT_DIM }}>Colin Williams</a> in Wolverhampton. Happy to visit agencies in the West Midlands in person.
         </p>
       </footer>
     </div>
